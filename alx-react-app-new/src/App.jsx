@@ -3,12 +3,12 @@ import Counter from "./components/Counter";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./UserProfile";
 import WelcomeMessage from "./components/WelcomeMessage";
 import UserContext from "./components/UserContext";
-import ProfilePage from "./components/ProfilePage";
-import UserDetails from "./components/UserDetails";
-import UserInfo from "./components/UserInfo";
+import ProfilePage from "./ProfilePage";
+import UserDetails from "./UserDetails";
+import UserInfo from "./UserInfo";
 
 function App() {
   const userData = {
