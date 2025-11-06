@@ -4,10 +4,10 @@ import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 import UserProfile from "./components/UserProfile";
 import WelcomeMessage from "./components/WelcomeMessage";
-import UserContext from "./UserContext";
-import UserDetails from "./UserDetails";
-import UserInfo from "./UserInfo";
-import ProfilePage from "./ProfilePage"
+import UserContext from "./components/UserContext";
+import UserDetails from "./components/UserDetails";
+import UserInfo from "./components/UserInfo";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const userData = {
