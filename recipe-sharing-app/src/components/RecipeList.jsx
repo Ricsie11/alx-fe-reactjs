@@ -1,4 +1,4 @@
-import useRecipeStore from "../store.jsx";
+import useRecipeStore from "./recipestore.js";
 
 function RecipeList() {
   const recipes = useRecipeStore((state) => state.recipes);
