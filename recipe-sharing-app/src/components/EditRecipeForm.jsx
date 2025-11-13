@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import  useRecipeStore  from "./recipeStore";
+import useRecipeStore from "./recipeStore";
 
 const EditRecipeForm = ({ recipe }) => {
   const updateRecipe = useRecipeStore((s) => s.updateRecipe);
@@ -28,12 +28,14 @@ const EditRecipeForm = ({ recipe }) => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (!recipe) {
       alert("Recipe not found!");
       return;
     }
+    event.preventDefault(); // Prevent page reload
+
     updateRecipe(recipe.id, formData);
     alert("Recipe updated successfully!");
   };
@@ -68,7 +70,7 @@ const EditRecipeForm = ({ recipe }) => {
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
       >
         Save Changes
       </button>
