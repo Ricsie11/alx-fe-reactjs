@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AddRecipeForm from './components/AddRecipeForm'
-import RecipeList from './components/RecipeList'
-import RecipeDetails from './components/RecipeDetails'
+import SearchBar from "./components/SearchBar";
+import RecipeList from "./components/RecipeList";
+import AddRecipeForm from "./components/AddRecipeForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";    
 
 function App() {
   return (
@@ -14,17 +14,17 @@ function App() {
             path="/"
             element={
               <>
+                
                 <RecipeList />
                 <AddRecipeForm />
               </>
             }
           />
-          
-          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/recipe/:id" element={<SearchBar />} />
         </Routes>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

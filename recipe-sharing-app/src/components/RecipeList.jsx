@@ -2,6 +2,9 @@ import useRecipeStore from "./recipeStore";
 
 function RecipeList() {
   const recipes = useRecipeStore((state) => state.recipes);
+  const filteredRecipes = useRecipeStore((s) => s.filteredRecipes);
+
+  if (filteredRecipes.length === 0) return <p>No recipes found.</p>;
   return (
     <div>
       {recipes.map((recipe) => (
@@ -10,6 +13,13 @@ function RecipeList() {
           <p> {recipe.description} </p>
         </div>
       ))}
+      <ul>
+        {filteredRecipes.map((recipe) => (
+          <li key={recipe.id}>
+            <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
