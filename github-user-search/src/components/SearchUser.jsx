@@ -12,14 +12,12 @@ function SearchUser() {
 
     setLoading(true);
     setErrorMsg("");
-    const user = await fetchUserData(username);
-    setUserData(user);
-    setLoading(false);
+    setUserData(null);
 
     const result = await fetchUserData(username);
 
     if (result.error) {
-      setErrorMsg("Looks like we can't find the user");
+      setErrorMsg("Looks like we cant find the user");
     } else {
       setUserData(result.data);
     }
@@ -34,14 +32,14 @@ function SearchUser() {
 
         <input
           type="text"
-          placeholder="Enter your username..."
+          placeholder="Enter username..."
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           style={{ padding: "8px", marginRight: "10px" }}
         />
 
         <button onClick={handleSearch} style={{ padding: "8px" }}>
-          search
+          Search
         </button>
 
         {loading && <p>Loading...</p>}
@@ -58,7 +56,7 @@ function SearchUser() {
               alt="avatar"
             />
             <p>{userData.bio}</p>
-            <a href={userData.html_url} target="_blank">
+            <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
               View profile on Github
             </a>
           </div>
