@@ -5,15 +5,28 @@ function SearchUser() {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSearch() {
     if (!username) return;
 
     setLoading(true);
+    setErrorMsg("");
     const user = await fetchUserData(username);
     setUserData(user);
     setLoading(false);
+
+    const result = await fetchUserData(username);
+
+    if (result.error) {
+      setErrorMsg("Looks like we can't find the user");
+    } else {
+      setUserData(result.data);
+    }
+
+    setLoading(false);
   }
+
   return (
     <>
       <div style={{ padding: "20px" }}>
@@ -32,6 +45,8 @@ function SearchUser() {
         </button>
 
         {loading && <p>Loading...</p>}
+
+        {!loading && errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
 
         {!loading && userData && (
           <div style={{ marginTop: "20px" }}>

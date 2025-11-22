@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users/{username}";
+const BASE_URL = "https://api.github.com/users/";
 
 export async function fetchUserData(username) {
   try {
@@ -9,9 +9,9 @@ export async function fetchUserData(username) {
         Authorization: `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`
       }
     });
-    return response.data;
+    return { data: response.data, error: null };
   } catch (error) {
     console.log(" Looks like we cant find the user:", error);
-    return null;
+    return { data: null, error: "User not found" };
   }
 }
