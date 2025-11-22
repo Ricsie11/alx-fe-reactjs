@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users/";
+const BASE_URL = "https://api.github.com/users/{username}";
 
-export async function getGithubUser(username) {
+export async function fetchUserData(username) {
   try {
     const response = await axios.get(BASE_URL + username, {
       headers: {
@@ -11,7 +11,7 @@ export async function getGithubUser(username) {
     });
     return response.data;
   } catch (error) {
-    console.log("Error getting user:", error);
+    console.log(" Looks like we cant find the user:", error);
     return null;
   }
 }
