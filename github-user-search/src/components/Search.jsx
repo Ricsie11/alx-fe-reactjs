@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {  fetchUserData } from "../services/githubService";
+import { fetchUserData } from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
@@ -9,22 +9,27 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  let debounceTimer;
+
   async function handleSearch(e) {
-    e.preventDefault(); // required by your checker
+    e.preventDefault();
 
-    setLoading(true);
-    setErrorMsg("");
-    setResults([]);
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(async () => {
+      setLoading(true);
+      setErrorMsg("");
+      setResults([]);
 
-    const response = await  fetchUserData(username, location, minRepos);
+      const response = await fetchUserData(username, location, minRepos);
 
-    if (response.error) {
-      setErrorMsg("Looks like we cant find the user.");
-    } else {
-      setResults(response.data);
-    }
+      if (response.error || !response.data.length) {
+        setErrorMsg("Looks like we can't find the user.");
+      } else {
+        setResults(response.data);
+      }
 
-    setLoading(false);
+      setLoading(false);
+    }, 300); // 300ms debounce
   }
 
   return (
@@ -35,14 +40,14 @@ function Search() {
 
       <form
         onSubmit={handleSearch}
-        className="space-y-3 bg-gray-100 p-4 rounded-lg"
+        className="space-y-3 bg-gray-100 p-4 rounded-lg shadow-md"
       >
         <input
           type="text"
           placeholder="Username..."
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
         <input
@@ -50,7 +55,7 @@ function Search() {
           placeholder="Location..."
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
         <input
@@ -58,36 +63,44 @@ function Search() {
           placeholder="Minimum Repos..."
           value={minRepos}
           onChange={(e) => setMinRepos(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors duration-200"
         >
           Search
         </button>
       </form>
 
-      {loading && <p className="text-center mt-3">Loading...</p>}
+      {loading && <p className="text-center mt-3 text-gray-700">Loading...</p>}
 
       {errorMsg && <p className="text-red-500 text-center mt-3">{errorMsg}</p>}
 
-      {/* Show list of matched users */}
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
         {results.map((user) => (
           <div
             key={user.id}
-            className="p-4 border rounded flex items-center gap-4 bg-white"
+            className="p-4 border rounded flex items-center gap-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
           >
-            <img src={user.avatar_url} className="w-16 h-16 rounded-full" />
+            <img
+              src={user.avatar_url}
+              alt={`${user.login}'s avatar`}
+              className="w-16 h-16 rounded-full flex-shrink-0"
+              loading="lazy"
+            />
 
-            <div>
+            <div className="flex flex-col">
               <h3 className="font-semibold">{user.login}</h3>
+              {user.location && (
+                <span className="text-gray-500 text-sm">{user.location}</span>
+              )}
               <a
                 href={user.html_url}
                 target="_blank"
-                className="text-blue-500 underline"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline mt-1"
               >
                 View Profile
               </a>

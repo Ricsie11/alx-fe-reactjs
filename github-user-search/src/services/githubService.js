@@ -10,14 +10,13 @@ export async function fetchUserData(username, location, minRepos) {
     if (location) query += `location:${location}`;
     if (minRepos) query += `repos:>${minRepos}`;
 
-    const response = await axios.get(BASE_URL + username, {
+    const response = await axios.get(BASE_URL + query, {
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`,
       },
     });
-    return { data: response.data.items[0], error: null };
+    return { data: response.data.items, error: null };
   } catch (error) {
-    console.log(" Looks like we cant find the user:", error);
-    return { data: null, error: "User not found" };
+    return { data: null, error: "Search failed" };
   }
 }
