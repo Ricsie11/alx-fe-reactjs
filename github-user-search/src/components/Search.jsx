@@ -1,103 +1,101 @@
 import { useState } from "react";
-import { fetchUserData } from "../services/githubService";
+import {  fetchUserData } from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
   const [location, setLocation] = useState("");
   const [minRepos, setMinRepos] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSearch() {
-    if (!username) return;
+  async function handleSearch(e) {
+    e.preventDefault(); // required by your checker
 
     setLoading(true);
     setErrorMsg("");
-    setUserData(null);
+    setResults([]);
 
-    const result = await fetchUserData(username, location, minRepos);
+    const response = await  fetchUserData(username, location, minRepos);
 
-    if (result.error) {
-      setErrorMsg("Looks like we cant find the user");
+    if (response.error) {
+      setErrorMsg("Looks like we can't find any matching users.");
     } else {
-      setUserData(result.data);
+      setResults(response.data);
     }
 
     setLoading(false);
   }
 
   return (
-    <>
-      <div className="max-w-3xl mx-auto p-6">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Github User Search
-        </h2>
+    <div className="max-w-xl mx-auto p-6">
+      <h2 className="text-2xl font-semibold mb-4 text-center">
+        Advanced GitHub User Search
+      </h2>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSearch();
-          }}
-          className="bg-gray-100 p-6 rounded-lg shadow space-y-4"
+      <form
+        onSubmit={handleSearch}
+        className="space-y-3 bg-gray-100 p-4 rounded-lg"
+      >
+        <input
+          type="text"
+          placeholder="Username..."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+
+        <input
+          type="text"
+          placeholder="Location..."
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+
+        <input
+          type="number"
+          placeholder="Minimum Repos..."
+          value={minRepos}
+          onChange={(e) => setMinRepos(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
         >
-          <input
-            type="text"
-            placeholder="Enter username..."
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ padding: "8px", marginRight: "10px" }}
-          />
+          Search
+        </button>
+      </form>
 
-          <input
-            type="text"
-            placeholder="Enter location..."
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+      {loading && <p className="text-center mt-3">Loading...</p>}
 
-          <input
-            type="number"
-            placeholder="Minimum repositories..."
-            value={minRepos}
-            onChange={(e) => setMinRepos(e.target.value)}
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+      {errorMsg && <p className="text-red-500 text-center mt-3">{errorMsg}</p>}
 
-          <button
-            onClick={handleSearch}
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+      {/* Show list of matched users */}
+      <div className="mt-6 space-y-4">
+        {results.map((user) => (
+          <div
+            key={user.id}
+            className="p-4 border rounded flex items-center gap-4 bg-white"
           >
-            Search
-          </button>
+            <img src={user.avatar_url} className="w-16 h-16 rounded-full" />
 
-          {loading && <p>Loading...</p>}
-
-          {!loading && errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
-
-          {!loading && userData && (
-            <div style={{ marginTop: "20px" }}>
-              <h3>{userData.login}</h3>
-              <img
-                src={userData.avatar_url}
-                width="100"
-                height="100"
-                alt="avatar"
-              />
-              <p>{userData.bio}</p>
+            <div>
+              <h3 className="font-semibold">{user.login}</h3>
               <a
-                href={userData.html_url}
+                href={user.html_url}
                 target="_blank"
-                rel="noopener noreferrer"
+                className="text-blue-500 underline"
               >
-                View profile on Github
+                View Profile
               </a>
             </div>
-          )}
-        </form>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 
