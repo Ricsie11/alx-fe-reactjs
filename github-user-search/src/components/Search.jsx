@@ -23,7 +23,7 @@ function Search() {
       const response = await fetchUserData(username, location, minRepos);
 
       if (response.error || !response.data.length) {
-        setErrorMsg("Looks like we can't find the user.");
+        setErrorMsg("Looks like we cant find the user.");
       } else {
         setResults(response.data);
       }
