@@ -6,6 +6,8 @@ function Search() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [location, setLocation] = useState("");
+  const [minRepos, setMinRepos] = useState("");
 
   async function handleSearch() {
     if (!username) return;
@@ -14,7 +16,7 @@ function Search() {
     setErrorMsg("");
     setUserData(null);
 
-    const result = await fetchUserData(username);
+    const result = await fetchUserData(username, location, minRepos);
 
     if (result.error) {
       setErrorMsg("Looks like we cant find the user");
@@ -27,14 +29,17 @@ function Search() {
 
   return (
     <>
-      <div style={{ padding: "20px" }}>
-        <h2>Github User Search</h2>
+      <div className="max-w-3xl mx-auto p-6">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Github User Search
+        </h2>
 
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSearch();
           }}
+          className="bg-gray-100 p-6 rounded-lg shadow space-y-4"
         >
           <input
             type="text"
@@ -44,7 +49,26 @@ function Search() {
             style={{ padding: "8px", marginRight: "10px" }}
           />
 
-          <button onClick={handleSearch} style={{ padding: "8px" }}>
+          <input
+            type="text"
+            placeholder="Enter location..."
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <input
+            type="number"
+            placeholder="Minimum repositories..."
+            value={minRepos}
+            onChange={(e) => setMinRepos(e.target.value)}
+            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+
+          <button
+            onClick={handleSearch}
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          >
             Search
           </button>
 
