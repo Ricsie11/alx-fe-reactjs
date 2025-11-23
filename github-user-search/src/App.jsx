@@ -1,4 +1,4 @@
-import SearchUser from "./components/SearchUser"
+import Search from "./components/Search"
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <h1 style={{ textAlign: "center"}}>
           My Github Search App
         </h1>
-        <SearchUser /> 
+        <Search /> 
       </div>
     </>
   )
