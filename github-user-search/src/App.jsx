@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center"}}>
+        <h1 className="text-center text-xl text-blue-500 bg-black ">
           My Github Search App
         </h1>
         <Search /> 
