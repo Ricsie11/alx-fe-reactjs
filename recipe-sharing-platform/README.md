@@ -1,16 +1,51 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Recipe Sharing Platform
 
-Currently, two official plugins are available:
+### Overview
+The Recipe Sharing Platform is a web application that allows users to share, discover, and manage recipes. Built with React and Vite, this platform provides a user-friendly interface for cooking enthusiasts to connect and share their culinary creations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features
+- Recipe submission and editing
+- Recipe Detail Page
+- Responsive Form
+- Responsive design for mobile and desktop
 
-## React Compiler
+### Technologies Used
+- React
+- Vite
+- Tailwind CSS
+- JavaScript
+- Node.js
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ricsie11/alx-fe-reactjs.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd recipe-sharing-platform
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Expanding the ESLint configuration
+### Usage
+- Open your browser and go to `http://localhost:5173` to view the application.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
+### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Acknowledgments
+- Thanks to the open-source community for their contributions and support.
+
+---
