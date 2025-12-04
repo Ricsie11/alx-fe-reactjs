@@ -1,12 +1,14 @@
+import Homepage from "./components/HomePage";
 
 
 function App() {
-
   return (
     <>
-      <h1 className="text-4xl font-bold text-blue-500 text-center">Welcome User!</h1>
+      <div className="min-h-screen bg-gray-100">
+        <Homepage />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
