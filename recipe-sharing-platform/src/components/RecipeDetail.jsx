@@ -28,7 +28,7 @@ function RecipeDetail() {
           className="w-full h-64 object-cover rounded-lg shadow-md"
         />
         <div className="mt-6">
-          <h2 className="text-2xl font-semibold mb-2 underline">Cooking Instructions</h2>
+          <h2 className="text-2xl font-semibold mb-2 underline">Cooking Ingredients </h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-700 leading-relaxed">
             {(recipe.instructions ?? ["Instructions missing"]).map(
               (step, i) => (
