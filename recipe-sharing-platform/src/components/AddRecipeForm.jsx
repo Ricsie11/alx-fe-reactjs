@@ -3,20 +3,20 @@ import { useState } from "react";
 function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [instructions, setInstructions] = useState([]);
+  const [stepslist, setStepsList] = useState([]);
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validation
-    if (!title.trim() || !ingredients.trim() || !instructions.trim()) {
+    if (!title.trim() || !ingredients.trim() || !stepslist.trim()) {
       setError("All fields are required!");
       return;
     }
 
     const ingredientList = ingredients.split('\n').filter((i) => i.trim() == "");
-    const instructionList = instructions.split('\n').filter((i) => i.trim() == "");
+    const instructionList = stepslist.split('\n').filter((i) => i.trim() == "");
 
     if (ingredientList.length < 2) {
       setError("Please enter atleast 2 ingredients.");
@@ -33,7 +33,7 @@ function AddRecipeForm() {
       id: Date.now(),
       title,
       ingredients: ingredients,
-      instructions: instructions,
+      steps: stepslist,
     };
 
     alert("Recipe Submitted Successfully");
@@ -41,7 +41,7 @@ function AddRecipeForm() {
     //reset Form
     setTitle("");
     setIngredients("");
-    setInstructions("");
+    setStepsList("");
   };
 
   return (
@@ -67,7 +67,7 @@ function AddRecipeForm() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">Ingredients</label>
+            <label className="block font-medium mb-1">Ingredients:</label>
             <textarea
               className="w-full p-2 border rounded h-32 resize-none focus:outline-none focus:ring focus:ring-blue-400"
               value={ingredients}
@@ -76,11 +76,11 @@ function AddRecipeForm() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">Instructions</label>
+            <label className="block font-medium mb-1">Steps:</label>
             <textarea
               className="w-full p-2 border rounded h-32 resize-none focus:outline-none focus:ring focus:ring-blue-400"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
+              value={stepslist}
+              onChange={(e) => setStepsList(e.target.value)}
             ></textarea>
           </div>
 
