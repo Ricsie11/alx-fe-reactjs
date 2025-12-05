@@ -3,18 +3,73 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://www.allrecipes.com/thmb/Vg2cRidr2zcYhWGvPD8M18xM_WY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg",
+    "ingredients": [
+      "200g spaghetti",
+      "2 eggs",
+      "100g bacon",
+      "50g cheese",
+      "Black pepper"
+    ],
+    "instructions": [
+      "Cook spaghetti according to package instructions.",
+      "Fry bacon until crispy.",
+      "Whisk eggs and cheese together.",
+      "Combine spaghetti, bacon, and egg mixture.",
+      "Serve with black pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken cooked in a smooth buttery & creamy tomato-based gravy.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://www.seriouseats.com/thmb/DbQHUK2yNCALBnZE-H1M2AKLkok=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/chicken-tikka-masala-for-the-grill-recipe-hero-2_1-cb493f49e30140efbffec162d5f2d1d7.JPG",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup plain yogurt",
+      "2 tbsp tikka masala paste",
+      "1 onion, chopped",
+      "2 cloves garlic, minced",
+      "1 tbsp ginger, grated",
+      "1 cup tomato puree",
+      "1/2 cup heavy cream or coconut milk",
+      "1 tbsp butter",
+      "Salt & spices (cumin, turmeric, paprika)"
+    ],
+    "instructions": [
+      "Marinate chicken with yogurt and tikka masala paste for at least 30 minutes.",
+      "Grill or sauté the chicken until half cooked; set aside.",
+      "In a pot, melt butter and sauté onions until soft.",
+      "Add garlic, ginger, and spices, then cook for 1–2 minutes.",
+      "Pour in tomato puree and simmer for 5 minutes.",
+      "Add grilled chicken and cook on medium heat for 10 minutes.",
+      "Stir in cream and simmer until thick and creamy.",
+      "Serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Fried Rice",
     "summary": "Fluffy rice stir-fried with vegetables, eggs, and spices.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://cicili.tv/wp-content/uploads/2024/08/Chicken-Fried-Rice-Small-2-1200x900.jpg",
+    "ingredients": [
+      "3 cups cooked rice (preferably day-old)",
+      "2 eggs",
+      "1 cup mixed vegetables (carrots, peas, corn)",
+      "1 small onion, chopped",
+      "2 tbsp soy sauce",
+      "1 tbsp sesame oil or vegetable oil",
+      "1 clove garlic, minced",
+      "Salt & pepper"
+    ],
+    "instructions": [
+      "Heat oil in a pan and scramble the eggs; set aside.",
+      "Add more oil and sauté onions and garlic until fragrant.",
+      "Add mixed vegetables and cook for 2–3 minutes.",
+      "Add cooked rice and stir well to combine.",
+      "Season with soy sauce, salt, and pepper.",
+      "Add scrambled eggs back into the pan and mix.",
+      "Serve hot as a main dish or side."
+    ]
   }
 ]
