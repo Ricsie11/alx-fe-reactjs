@@ -19,12 +19,12 @@ function Homepage() {
           {recipes.map((recipe) => (
             <div
               key={recipe.id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+              className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl  transition-transform duration-300"
             >
               <img
                 src={recipe.image}
                 alt={recipe.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-cover hover:scale-[1.02]"
               />
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
@@ -40,6 +40,15 @@ function Homepage() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center mt-6">
+        <Link
+          to="/add-recipe"
+          className="bg-green-500 hover:bg-green-700 p-2 rounded text-white"
+        >
+          Add New Recipe
+        </Link>
       </div>
     </>
   );
