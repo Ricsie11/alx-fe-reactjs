@@ -16,9 +16,12 @@ function RecipeDetail() {
   return (
     <>
       <div className="p-6 max-w-3xl mx-auto">
-          <Link to="/" className=" mt-4 p-2 text-white rounded bg-blue-500 hover:bg-blue-700 ">
-            Back to Home
-          </Link>
+        <Link
+          to="/"
+          className=" mt-4 p-2 text-white rounded bg-blue-500 hover:bg-blue-700 "
+        >
+          Back to Home
+        </Link>
 
         <p className="text-4xl font-bold mt-4 mb-4">{recipe.title}</p>
 
@@ -27,8 +30,20 @@ function RecipeDetail() {
           alt={recipe.title}
           className="w-full h-64 object-cover rounded-lg shadow-md"
         />
+
         <div className="mt-6">
-          <h2 className="text-2xl font-semibold mb-2 underline">Cooking Ingredients </h2>
+          <h2 className="text-2xl font-semibold mb-2 underline">Ingredients</h2>
+          <ul className="list-disc list-inside space-y-1 text-gray-700">
+            {(recipe.ingredients ?? ["Ingredients missing"]).map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-6">
+          <h2 className="text-2xl font-semibold mb-2 underline">
+            Cooking Instructions{" "}
+          </h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-700 leading-relaxed">
             {(recipe.instructions ?? ["Instructions missing"]).map(
               (step, i) => (
