@@ -4,14 +4,14 @@ function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [stepslist, setStepsList] = useState([]);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validation
     if (!title.trim() || !ingredients.trim() || !stepslist.trim()) {
-      setError("All fields are required!");
+      setErrors("All fields are required!");
       return;
     }
 
@@ -19,15 +19,15 @@ function AddRecipeForm() {
     const instructionList = stepslist.split('\n').filter((i) => i.trim() == "");
 
     if (ingredientList.length < 2) {
-      setError("Please enter atleast 2 ingredients.");
+      setErrors("Please enter atleast 2 ingredients.");
       return;
     }
     if (instructionList.length < 2) {
-      setError("Please enter atleast 2 instructions.");
+      setErrors("Please enter atleast 2 instructions.");
       return;
     }
 
-    setError("");
+    setErrors("");
 
     const newRecipe = {
       id: Date.now(),
