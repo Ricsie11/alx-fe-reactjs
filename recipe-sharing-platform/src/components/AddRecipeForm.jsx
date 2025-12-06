@@ -1,29 +1,38 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddRecipeForm() {
   const [title, setTitle] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const [stepslist, setStepsList] = useState([]);
+  const [ingredients, setIngredients] = useState("");
+  const [stepslist, setStepsList] = useState("");
   const [errors, setErrors] = useState("");
 
+  const navigate = useNavigate();
+
+  // Validation
+  function validate() {
+    if (!title.trim() || !ingredients.trim() || !stepslist.trim()) {
+      setErrors("All fields are required!");
+      return false;
+    }
+    return true;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
-    if (!title.trim() || !ingredients.trim() || !stepslist.trim()) {
-      setErrors("All fields are required!");
-      return;
-    }
+    if (!validate()) return;
 
-    const ingredientList = ingredients.split('\n').filter((i) => i.trim() === "");
-    const instructionList = stepslist.split('\n').filter((i) => i.trim() === "");
+    const ingredientList = ingredients
+      .split("\n")
+      .filter((i) => i.trim() !== "");
+    const stepsList = stepslist.split("\n").filter((i) => i.trim() !== "");
 
     if (ingredientList.length < 2) {
-      setErrors("Please enter atleast 2 ingredients.");
+      setErrors("Please enter at least 2 ingredients.");
       return;
     }
-    if (instructionList.length < 2) {
-      setErrors("Please enter atleast 2 instructions.");
+    if (stepsList.length < 2) {
+      setErrors("Please enter at least 2 instructions.");
       return;
     }
 
@@ -32,8 +41,8 @@ function AddRecipeForm() {
     const newRecipe = {
       id: Date.now(),
       title,
-      ingredients: ingredients,
-      steps: stepslist,
+      ingredients: ingredientList,
+      steps: stepsList,
     };
 
     alert("Recipe Submitted Successfully");
@@ -42,11 +51,22 @@ function AddRecipeForm() {
     setTitle("");
     setIngredients("");
     setStepsList("");
+
+    //Redirect to home
+    navigate("/");
   };
 
   return (
     <>
-      <div className="max-w-xl mx-auto pt-12 p-6 bg-slate-300 rounded-lg shadow-md ">
+      <div>
+        <button
+          onClick={() => navigate("/")}
+          className="font-bold px-4 py-2 text-white rounded-lg bg-blue-500 hover:bg-blue-700 shadow-md border m-3"
+        >
+          Back
+        </button>
+      </div>
+      <div className="max-w-xl mx-auto p-6 bg-slate-300 rounded-lg shadow-md ">
         <h2 className="text-2xl font-bold mb-4 text-center">Add New Recipe </h2>
 
         {errors && (
