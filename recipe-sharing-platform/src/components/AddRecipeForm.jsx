@@ -15,8 +15,8 @@ function AddRecipeForm() {
       return;
     }
 
-    const ingredientList = ingredients.split('\n').filter((i) => i.trim() == "");
-    const instructionList = stepslist.split('\n').filter((i) => i.trim() == "");
+    const ingredientList = ingredients.split('\n').filter((i) => i.trim() === "");
+    const instructionList = stepslist.split('\n').filter((i) => i.trim() === "");
 
     if (ingredientList.length < 2) {
       setErrors("Please enter atleast 2 ingredients.");
@@ -49,9 +49,9 @@ function AddRecipeForm() {
       <div className="max-w-xl mx-auto pt-12 p-6 bg-slate-300 rounded-lg shadow-md ">
         <h2 className="text-2xl font-bold mb-4 text-center">Add New Recipe </h2>
 
-        {error && (
+        {errors && (
           <p className="text-red-600 mb-4 text-center font-semi-bold">
-            {error}
+            {errors}
           </p>
         )}
 
