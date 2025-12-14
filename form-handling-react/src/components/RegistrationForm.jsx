@@ -7,7 +7,7 @@ function RegistrationForm() {
     password: "",
   });
 
-  const [error, setError] = useState("");
+  const [error, setErrors] = useState("");
 
   //To Handle input change
   function handleChange(e) {
@@ -25,19 +25,19 @@ function RegistrationForm() {
 
     //Error handling
     if (!username) {
-      setError("Username is required.");
+      setErrors("Username is required.");
       return;
     }
     if (!email) {
-      setError("Email is required.");
+      setErrors("Email is required.");
       return;
     }
     if (!password) {
-      setError("Password is required.");
+      setErrors("Password is required.");
       return;
     }
 
-    setError("");
+    setErrors("");
 
     console.log("User Registered Successfully: ", formData);
 
