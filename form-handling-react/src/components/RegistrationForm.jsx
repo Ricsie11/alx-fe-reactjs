@@ -24,12 +24,16 @@ function RegistrationForm() {
     // const { username, email, password } = formData;
 
     //Error handling
-    if (!email ) {
-      setError("All fields are required.");
+    if (!username) {
+      setError("Username is required.");
       return;
     }
-    if (!password ) {
-      setError("All fields are required.");
+    if (!email) {
+      setError("Email is required.");
+      return;
+    }
+    if (!password) {
+      setError("Password is required.");
       return;
     }
 
@@ -63,21 +67,24 @@ function RegistrationForm() {
 
         <div>
           <label> Email</label>
-          <input type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-           />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleChange}
+          />
         </div>
 
         <div>
           <label> Password</label>
-          <input type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={handleChange} />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={password}
+            onChange={handleChange}
+          />
 
           <button type="submit">Register</button>
         </div>
