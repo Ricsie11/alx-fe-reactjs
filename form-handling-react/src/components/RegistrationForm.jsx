@@ -24,7 +24,11 @@ function RegistrationForm() {
     // const { username, email, password } = formData;
 
     //Error handling
-    if (!username || !email || !password) {
+    if (!email ) {
+      setError("All fields are required.");
+      return;
+    }
+    if (!password ) {
       setError("All fields are required.");
       return;
     }
