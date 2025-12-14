@@ -44,6 +44,7 @@ function AddRecipeForm() {
       ingredients: ingredientList,
       steps: stepsList,
     };
+    console.log(newRecipe)
 
     alert("Recipe Submitted Successfully");
 
