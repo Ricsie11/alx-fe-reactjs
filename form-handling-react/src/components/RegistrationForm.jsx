@@ -21,7 +21,7 @@ function RegistrationForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { username, email, password } = formData;
+    // const { username, email, password } = formData;
 
     //Error handling
     if (!username || !email || !password) {
@@ -52,7 +52,7 @@ function RegistrationForm() {
             type="text"
             name="username"
             placeholder="Username"
-            value={formData.username}
+            value={username}
             onChange={handleChange}
           />
         </div>
@@ -62,7 +62,7 @@ function RegistrationForm() {
           <input type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
+          value={email}
           onChange={handleChange}
            />
         </div>
@@ -72,7 +72,7 @@ function RegistrationForm() {
           <input type="password"
           name="password"
           placeholder="password"
-          value={formData.password}
+          value={password}
           onChange={handleChange} />
 
           <button type="submit">Register</button>
