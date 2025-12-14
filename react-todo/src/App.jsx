@@ -1,3 +1,4 @@
+import Testing from "./components/Testing"
 import TodoList from "./components/TodoList"
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <TodoList />
+      <Testing />
     </>
   )
 }
