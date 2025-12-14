@@ -12,7 +12,11 @@ function PostsComponent() {
     queryKey: ["posts"],
     queryFn: fetchPosts,
     staleTime: 1000 * 30,
+    cacheTime: 1000 * 60,
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
   });
+  
   if (isLoading) return <p>Loading posts...</p>;
   if (isError) return <p>Error: {error.message} </p>;
 
