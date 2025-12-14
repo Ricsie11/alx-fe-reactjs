@@ -22,7 +22,7 @@ function App() {
             }
           />
 
-          <Route path="/posts/:id" element={<BlogPost />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
         </Routes>
       </Router>
     </>
