@@ -16,14 +16,14 @@ function PostsComponent() {
     refetchOnWindowFocus: false,
     keepPreviousData: true,
   });
-  
+
   if (isLoading) return <p>Loading posts...</p>;
   if (isError) return <p>Error: {error.message} </p>;
 
   return (
     <div>
       <h2>Posts</h2>
-      <button onSubmit={refetch}>Refetch</button>
+      <button onClick={refetch}>Refetch</button>
 
       <ul>
         {data.slice(0, 10).map((post) => (
